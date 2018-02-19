@@ -1,31 +1,12 @@
 pipeline {
-	agent any 
-	stages {
-		
-		stage('build'){
-	     steps {
-	     	sh 'make'
-
-	     }		
-		}
-
-		stage('test'){
-			stpes{
-				sh 'mke test'
-			}
-		}	
-
-		stage('deploy'){
-			steps{
-				sh 'mke publish'
-			}
-		}
-
-
-
-
-	}
-
-
-
+    agent none 
+  
+        stage('Example Test') {
+            agent { docker 'openjdk:8-jre' } 
+            steps {
+                echo 'Hello, JDK'
+                sh 'java -version'
+            }
+        }
+    }
 }
